@@ -1,4 +1,5 @@
 package HarrysHairSalon;
 
-public enum AppointmentStatus {
-}
+public enum AppointmentStatus {SCHEDULED, COMPLETED, CANCELLED}
+
+
