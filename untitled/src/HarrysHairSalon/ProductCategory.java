@@ -1,3 +1,3 @@
 package HarrysHairSalon;
 
-public enum ProductCategory {SHAMPOO, BRUSH, BONNET, DURAG, OTHER}
+public enum ProductCategory {SHAMPOO, CONDITIONER, BRUSH, WAX_AND_GEL, OTHER}
