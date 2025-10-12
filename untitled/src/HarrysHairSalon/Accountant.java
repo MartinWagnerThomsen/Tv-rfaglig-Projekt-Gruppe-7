@@ -27,9 +27,11 @@ public class Accountant extends User {
         System.out.println(username + " " + "CAN'T DELETE APPOINTMENT");
     }
     //Laver print text på at den generer en rapport
+    @Override
     public void generateFinancialReport(){
         System.out.println(username + " " + "is generating financial report....");
     }
+    @Override
     public void viewDailyRevenue(){
         System.out.println(username + " " + "is viewing today's revenue");
     }
