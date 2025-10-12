@@ -13,7 +13,7 @@ public class Accountant extends User {
     }
     //Fortæller at accountant får adgang til financials
     @Override
-    public abstract boolean canAccesFinancials(){
+    public boolean canAccessFinancials(){
         return true;
     }
     //Fortæller accountant at de ikke kan lave nye aftaler

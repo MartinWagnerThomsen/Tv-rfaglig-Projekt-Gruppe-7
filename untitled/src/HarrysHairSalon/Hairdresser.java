@@ -15,7 +15,7 @@ public class Hairdresser extends User {
     }
 // At man får adgang til financials
     @Override
-    public boolean canAccesFinancials() {
+    public boolean canAccessFinancials() {
         return true;
     }
 // Man kan lave aftaler, og får et output på hvilken aftale man har lavet
