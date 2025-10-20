@@ -14,7 +14,7 @@ public class Appointment {
     //Konstruktøre
     public Appointment(int id, Customer customer, LocalDateTime dateTime, int duration, Order order){
         this.id = id;
-        this.customer = customer:
+        this.customer = customer;
         this.dateTime = dateTime;
         this.duration = duration;
         this.order = order;
@@ -33,15 +33,15 @@ public class Appointment {
     public String getAppointmentDetails() {
         return "Appointment ID: " + id +
                 "\nCustomer: " + customer.getName() +
-                "\nDate and time: " dateTime +
+                "\nDate and time: " + dateTime +
                 "\nDuration in minutes: " + duration +
                 "\nOrder: " + order.getOrderDetails() +
-                "\nStauts: " + status;
+                "\nStatus: " + status;
     }
 
     //Fuldføre aftalen
     public void completeAppointment(){
-        if (status != AppointmentStatus.SCHEDULED) {
+        if (status != AppointmentStatus.CANCELLED) {
             status = AppointmentStatus.COMPLETED;
             System.out.println("Appointment " + id + " is booked");
         } else {
