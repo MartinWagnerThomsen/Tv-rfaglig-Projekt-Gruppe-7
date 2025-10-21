@@ -134,7 +134,8 @@ public class BookingSystem {
     private boolean isTimeSlotAvailable(LocalTime dateTime, int duration) {
         LocalDateTime endTime = LocalDateTime.from(dateTime.plusMinutes(duration));
 
-        for (Appointment apt : AppointmentStatus.CANCELLED) {
+        for (Appointment apt : appointments) {
+            if (apt.getStatus() == AppointmentStatus.CANCELLED) {}
             continue;
         }
 

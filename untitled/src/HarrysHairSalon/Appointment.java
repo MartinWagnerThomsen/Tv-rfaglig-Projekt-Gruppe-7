@@ -69,6 +69,9 @@ public class Appointment {
         return getAppointmentDetails();
     }
 
+
     public int getId() {
+        return 0;
     }
 }
+

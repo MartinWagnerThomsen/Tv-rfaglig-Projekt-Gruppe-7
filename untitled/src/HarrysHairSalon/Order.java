@@ -57,4 +57,8 @@ public class Order {
     public Payment getPayment() {
         return null;
     }
+
+    public String getOrderDetails() {
+        return null;
+    }
 }
