@@ -15,6 +15,9 @@ public class Customer {
         this.hasCredit = false;
     }
 
+    public Customer(int id, String part, String part1, String part2) {
+    }
+
     //Getters
     public int getId() {
         return id;

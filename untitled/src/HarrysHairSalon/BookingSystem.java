@@ -158,7 +158,7 @@ public class BookingSystem {
  */
 public Customer searchCustomer(String searchTerm) {
     for (Customer c : customers) {
-        if (c.getName().toLowerCase().contains(searchTerm.toLowerCase())) ||
+        if (c.getName().toLowerCase().contains(searchTerm.toLowerCase()) ||
         c.getPhone().contains(searchTerm)) {
             return c;
         }
@@ -224,7 +224,7 @@ public void loadData() {
             if (section.contains("CUSTOMERS") && !line.isEmpty()) {
                 String[] parts = line.split(";");
                 int id = Integer.parseInt(parts[0]);
-                Customer c = new Customer(id, parts[1], parts[2], parts[3], );
+                Customer c = new Customer(id, parts[1], parts[2], parts[3]);
                 c.setHasCredit(Boolean.parseBoolean(parts[4]));
                 customers.add(c);
             }
