@@ -51,13 +51,13 @@ public class BookingSystem {
             return false;
         }
         // Check if timeslot is available
-        if (!isTimeSlotAvailable(dateTime, duration)) {
+        if (!isTimeSlotAvailable(LocalTime.from(dateTime), duration)) {
             System.out.println("Time slot isn't available");
             return false;
         }
         // Make new appointment
-        int newID = appointment.size() + 1;
-        Appointment newAppointment = new Appointment(newId, customer, dateTime, duration);
+        int newID = appointments.size() + 1;
+        Appointment newAppointment = new Appointment(newID, customer, dateTime, duration);
         appointments.add(newAppointment);
 
         System.out.println("New appointment has been created");
@@ -116,7 +116,7 @@ public class BookingSystem {
         while (currentTime.isBefore(endTime)) {
             LocalDateTime slotDateTime = LocalDateTime.of(date, currentTime);
 
-            if (isTimeSlotAvailable(slotDateTime, slotDuration)) {
+            if (isTimeSlotAvailable(LocalTime.from(slotDateTime), slotDuration)) {
                 System.out.println("✓ " + currentTime + " - Available");
             } else {
                 System.out.println("✗ " + currentTime + " -  Not Available ");
@@ -132,12 +132,13 @@ public class BookingSystem {
      * @return true if available, false if not
      */
     private boolean isTimeSlotAvailable(LocalTime dateTime, int duration) {
-        LocalDateTime endTime = dateTime.plusMinutes(duration);
+        LocalDateTime endTime = LocalDateTime.from(dateTime.plusMinutes(duration));
 
         for (Appointment apt : AppointmentStatus.CANCELLED) {
             continue;
         }
 
+        Appointment apt;
         LocalDateTime aptStart = apt.getDateTime();
         LocalDateTime aptEnd = aptStart.plusMinutes(apt.getDuration());
 
@@ -150,15 +151,15 @@ public class BookingSystem {
 }
 
 /**
- * Search for customer based on name or phonenumber
+ * Search for customer based on name or phone number
  *
- * @param searchTerm searchTerm (name or phonenumber)
+ * @param searchTerm searchTerm (name or phone number)
  * @return customer if found, null if not
  */
 public Customer searchCustomer(String searchTerm) {
     for (Customer c : customers) {
         if (c.getName().toLowerCase().contains(searchTerm.toLowerCase())) ||
-        c.getPhone().contains(searchTerm)){
+        c.getPhone().contains(searchTerm)) {
             return c;
         }
     }
@@ -247,7 +248,7 @@ public void loadData() {
 public void setCurrentUser(User user) {
     this.currentUser = user;
     System.out.println("Logged in as: " + user.getUsername() +
-            " (" + user.getRole() + ")")
+            " (" + user.getRole() + ")");
 }
 
 /**

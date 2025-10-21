@@ -34,5 +34,13 @@ public abstract class User {
 
     public abstract Permission getPermission();
 
-    public abstract boolean canAccessFinacials();
+    public abstract boolean canAccessFinancials();
+
+    public Object getPermisions() {
+        return null;
+    }
+
+    public Object getPermissions() {
+        return null;
+    }
 }

@@ -1,6 +1,5 @@
 package HarrysHairSalon;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Appointment {
@@ -12,7 +11,7 @@ public class Appointment {
     private AppointmentStatus status;
 
     //Konstruktøre
-    public Appointment(int id, Customer customer, LocalDateTime dateTime, int duration, Order order){
+    public Appointment(int id, Customer customer, LocalDateTime dateTime, int duration){
         this.id = id;
         this.customer = customer;
         this.dateTime = dateTime;
@@ -68,5 +67,8 @@ public class Appointment {
     @Override
     public String toString(){
         return getAppointmentDetails();
+    }
+
+    public int getId() {
     }
 }
