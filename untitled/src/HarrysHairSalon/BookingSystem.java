@@ -138,12 +138,12 @@ public class BookingSystem {
             continue;
         }
 
-        Appointment apt;
+        Appointment apt = null;
         LocalDateTime aptStart = apt.getDateTime();
         LocalDateTime aptEnd = aptStart.plusMinutes(apt.getDuration());
 
         // check for overlap
-        if (dateTime.isBefore(aptEnd) && endTime.isAfter(aptStart)) {
+        if (dateTime.isBefore(LocalTime.from(aptEnd)) && endTime.isAfter(aptStart)) {
             return false;
         }
 

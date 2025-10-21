@@ -28,7 +28,7 @@ public class Customer {
         return phone;
     }
 
-    public String getmail() {
+    public String getEmail() {
         return mail;
     }
 

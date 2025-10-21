@@ -53,4 +53,8 @@ public class Order {
     public String toString(){
         return "Order #" + orderId + "\nAmount: " + totalAmount + " DKK";
     }
+
+    public Payment getPayment() {
+        return null;
+    }
 }
