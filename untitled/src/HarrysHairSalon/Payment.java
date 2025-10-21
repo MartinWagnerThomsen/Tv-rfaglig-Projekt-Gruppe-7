@@ -21,7 +21,7 @@ public class Payment {
 
 
         public Payment(PaymentMethod paymentMethod, double amount) {
-            this(false, null, paymentTime, amount);
+            this(false, null, null, paymentMethod, amount);
         }
 
     //Getters
