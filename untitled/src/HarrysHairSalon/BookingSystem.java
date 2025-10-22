@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.io.*;
 
 public class BookingSystem {
-    // Attributes
+    // Attributer
     private ArrayList<Appointment> appointments;
     private ArrayList<Customer> customers;
     private ArrayList<Product> products;
@@ -15,7 +15,7 @@ public class BookingSystem {
     private User currentUser;
     private static final String DATA_FILE = "booking_data.txt";
 
-    // Constructor
+    // konstruktør
     public BookingSystem() {
         this.appointments = new ArrayList<>();
         this.customers = new ArrayList<>();
@@ -48,7 +48,7 @@ public class BookingSystem {
             return false;
         }
 
-        // Tjek om salonen er åben
+        // Tjekker om salonen er åben
         if (!salon.isOpenOn(dateTime.toLocalDate())) {
             System.out.println("The salon is closed this day");
             return false;
@@ -59,7 +59,7 @@ public class BookingSystem {
             return false;
         }
 
-        // Opret ny aftale
+        // Opretter ny aftale
         int newID = appointments.size() + 1;
         Appointment newAppointment = new Appointment(newID, customer, dateTime, duration);
         appointments.add(newAppointment);
@@ -120,20 +120,17 @@ public class BookingSystem {
         while (currentTime.isBefore(endTime)) {
             LocalDateTime slotDateTime = LocalDateTime.of(date, currentTime);
 
-            // RETTET: Sender LocalDateTime
             if (isTimeSlotAvailable(slotDateTime, slotDuration)) {
                 System.out.println("✓ " + currentTime + " - Available");
             } else {
                 System.out.println("✗ " + currentTime + " - Not Available");
             }
 
-            // RETTET: plusHours(1) i stedet for plusHours(60)
             currentTime = currentTime.plusHours(1);
         }
     }
 
     /**
-     * RETTET: Komplet omskrevet metode
      * @param dateTime Tidspunkt der skal tjekkes
      * @param duration Varighed i minutter
      * @return true hvis ledigt, false hvis optaget
@@ -287,7 +284,6 @@ public class BookingSystem {
                     apt.getStatus() == AppointmentStatus.COMPLETED) {
 
                 Order order = apt.getOrder();
-                // RETTET: Tjekker både order og payment for null
                 if (order != null && order.getPayment() != null && order.getPayment().isPaid()) {
                     System.out.println("Customer: " + apt.getCustomer().getName() +
                             " | Amount: " + String.format("%.2f", order.getTotalAmount()) + " kr");
