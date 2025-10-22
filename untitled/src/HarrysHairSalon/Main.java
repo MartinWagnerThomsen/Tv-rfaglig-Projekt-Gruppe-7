@@ -132,7 +132,7 @@ public class Main {
         int year = getIntInput("Year (e.g., 2025): ");
         int month = getIntInput("Month (1-12): ");
         int day = getIntInput("Day: ");
-        int hour = getIntInput("Hour (10-18): ");
+        int hour = getIntInput("Hour (10-17): ");
 
         LocalDateTime dateTime = LocalDateTime.of(year, month, day, hour, 0);
         int duration = getIntInput("Duration in minutes (default 60): ");
