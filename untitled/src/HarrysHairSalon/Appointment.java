@@ -16,17 +16,22 @@ public class Appointment {
         this.customer = customer;
         this.dateTime = dateTime;
         this.duration = duration;
-        this.order = order;
+        this.order = null;
         this.status = AppointmentStatus.SCHEDULED;
     }
 
     //Gettere
-    public int getID() {return id; }
+    public int getId() {return id; }
     public Customer getCustomer() { return customer; }
     public LocalDateTime getDateTime() { return dateTime; }
     public int getDuration() { return duration; }
     public Order getOrder() { return order; }
     public AppointmentStatus getStatus() { return status; }
+
+    // Setter for order -
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
     //Laver detajlerne for aftalen
     public String getAppointmentDetails() {
