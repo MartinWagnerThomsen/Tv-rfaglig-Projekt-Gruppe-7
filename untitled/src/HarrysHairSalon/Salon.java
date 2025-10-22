@@ -2,6 +2,7 @@ package HarrysHairSalon;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,9 +16,24 @@ public class Salon {
     // Constructor
     public Salon(String name) {
         this.name = name;
-        this.password = password;
+        this.password = "hairyharry";  // RETTET: Sættes til korrekt password
         this.openingHours = new HashMap<>();
-        this.closedDates = new ArrayList<LocalDate>();
+        this.closedDates = new ArrayList<>();
+        initializeOpeningHours();  // TILFØJET: Initialiserer åbningstider
+    }
+
+    // TILFØJET: Initialiserer standard åbningstider (man-fre 10-18)
+    private void initializeOpeningHours() {
+        LocalTime openTime = LocalTime.of(10, 0);
+        LocalTime closeTime = LocalTime.of(18, 0);
+        TimeSlot workHours = new TimeSlot(openTime, closeTime, true);
+
+        // Mandag til fredag
+        openingHours.put(DayOfWeek.MONDAY, workHours);
+        openingHours.put(DayOfWeek.TUESDAY, workHours);
+        openingHours.put(DayOfWeek.WEDNESDAY, workHours);
+        openingHours.put(DayOfWeek.THURSDAY, workHours);
+        openingHours.put(DayOfWeek.FRIDAY, workHours);
     }
 
     // Getters and Setters
@@ -49,49 +65,56 @@ public class Salon {
         this.password = password;
     }
 
-    // Check if salon is open on a specific date
+    // Tjek om salonen er åben på en specifik dato
     public boolean isOpenOn(LocalDate date) {
-        // Check if date is in closed dates
+        // Tjek om datoen er en lukkedag
         if (closedDates.contains(date)) {
             return false;
         }
 
-        // Check if there are opening hours for this day of week
+        // Tjek om der er åbningstider for denne ugedag
         DayOfWeek dayOfWeek = date.getDayOfWeek();
         return openingHours.containsKey(dayOfWeek);
     }
 
-    // Add a closed date
+    // RETTET: Kalder isOpenOn i stedet for at returnere false
+    public boolean isOpen(LocalDate date) {
+        return isOpenOn(date);
+    }
+
+    // Tilføj en lukkedag (ferie/helligdag)
     public void addClosedDate(LocalDate date) {
         if (!closedDates.contains(date)) {
             closedDates.add(date);
+            System.out.println("Added closed date: " + date);
         }
     }
 
-    // Remove a closed date
+    // Fjern en lukkedag
     public void removeClosedDate(LocalDate date) {
-        closedDates.remove(date);
+        if (closedDates.remove(date)) {
+            System.out.println("Removed closed date: " + date);
+        }
     }
 
-    // Verify password
+    // Verificer password for adgang til financials
     public boolean verifyPassword(String inputPassword) {
         return this.password.equals(inputPassword);
     }
 
-    // Helper method to add opening hours for a specific day
+    // Tilføj åbningstider for en specifik dag
     public void addOpeningHours(DayOfWeek day, TimeSlot timeSlot) {
         openingHours.put(day, timeSlot);
+    }
+
+    // Fjern åbningstider for en specifik dag (fx hvis lukket weekenden)
+    public void removeOpeningHours(DayOfWeek day) {
+        openingHours.remove(day);
     }
 
     @Override
     public String toString() {
         return "Salon: " + name;
     }
-
-    public boolean isOpen(LocalDate date) {
-        return false;
-    }
 }
-
-
 
