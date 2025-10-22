@@ -12,10 +12,11 @@ public class Customer {
         this.name = name;
         this.phone = phone;
         this.mail = mail;
-        this.hasCredit = false;
+        this.hasCredit = hasCredit;
     }
 
-    public Customer(int id, String part, String part1, String part2) {
+    public Customer(int id, String name, String phone, String mail) {
+        this(id, name, phone, mail, false);
     }
 
     //Getters
