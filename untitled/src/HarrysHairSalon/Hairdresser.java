@@ -13,7 +13,7 @@ public class Hairdresser extends User {
 // Man kan få lov til lave eller slette aftaler
     @Override
     public String getPermission() {
-        return "FULL ACCESS: Can choose to create or delete appointments";
+        return "FULL_ACCESS:";
 
     }
 
