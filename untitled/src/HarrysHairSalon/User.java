@@ -11,10 +11,12 @@ public abstract class User {
         this.role = role;
     }
 
+    // Getters
     public String getUsername() {return username;}
     public String getPassword() {return password;}
     public UserRole getRole() {return role;}
 
+    // Setters
     public void setUsername(String username) {this.username = username;}
     public void setPassword(String password) {this.password = password;}
     public void setRole(UserRole role) {this.role = role;}
@@ -28,19 +30,16 @@ public abstract class User {
         return getUserInfo();
     }
 
+    // Login metode
     public boolean login (String password){
         return this.password.equals(password);
     }
 
-    public abstract Permission getPermission();
-
+    // Abstrakte metoder
+    public abstract String getPermission();
     public abstract boolean canAccessFinancials();
-
-    public Object getPermisions() {
-        return null;
-    }
-
-    public Object getPermissions() {
-        return null;
-    }
+    public abstract void createAppointment(String appointment);
+    public abstract void deleteAppointment(String appointment);
+    public abstract void generateFinancialReport();
+    public abstract void viewDailyRevenue();
 }
