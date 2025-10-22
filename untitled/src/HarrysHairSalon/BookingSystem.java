@@ -79,7 +79,7 @@ public class BookingSystem {
      * @return true hvis sletning lykkedes
      */
     public boolean deleteAppointment(int appointmentId) {
-        if (currentUser == null || !currentUser.getPermission().equals("FULL_ACCESS")) {
+        if (currentUser == null || !currentUser.getPermission().startsWith("FULL")) {
             System.out.println("You are not allowed to delete an appointment without permissions.");
             return false;
         }
@@ -234,7 +234,7 @@ public class BookingSystem {
                     customers.add(c);
                 }
 
-                // TODO: Implementer loading af appointments
+
             }
             System.out.println("Data loaded!");
             System.out.println("Customer amount: " + customers.size());
@@ -314,7 +314,7 @@ public class BookingSystem {
         return salon;
     }
 
-    public User getCurrentUser() {  // RETTET: Stavefejl i metodenavnet
+    public User getCurrentUser() {
         return currentUser;
     }
 }

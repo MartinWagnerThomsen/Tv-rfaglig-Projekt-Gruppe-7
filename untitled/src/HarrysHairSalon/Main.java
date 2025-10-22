@@ -214,7 +214,7 @@ public class Main {
 
         // Verificer password hvis nødvendigt
         if (bookingSystem.getCurrentUser().canAccessFinancials()) {
-            System.out.print("Enter password (hairyharry): ");
+            System.out.print("Enter password: ");
             String password = scanner.nextLine();
 
             if (!bookingSystem.verifyFinancialPassword(password)) {
