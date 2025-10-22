@@ -43,7 +43,7 @@ public class BookingSystem {
      * @return true hvis aftalen blev oprettet, false hvis tidspunktet ikke er ledigt
      */
     public boolean createAppointment(Customer customer, LocalDateTime dateTime, int duration) {
-        if (currentUser == null || !currentUser.getPermission().equals("FULL_ACCESS")) {
+        if (currentUser == null || !currentUser.getPermission().contains("FULL_ACCESS")) {
             System.out.println("You are not allowed to create an appointment without permissions.");
             return false;
         }
