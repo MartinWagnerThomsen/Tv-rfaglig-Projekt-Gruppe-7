@@ -11,7 +11,7 @@ public class Accountant extends User {
     //Fortæller at accountant kun kan læse i systemet og har får muligheden for at se dagens revenue + generer en rapport
     @Override
     public String getPermission(){
-        return "READ ONLY: Can only see revenue and generate report";
+        return "READ_ONLY:";
 
     }
 
