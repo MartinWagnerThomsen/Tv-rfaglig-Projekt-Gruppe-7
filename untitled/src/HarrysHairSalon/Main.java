@@ -1,4 +1,4 @@
-import HarrysHairSalon.*;
+package HarrysHairSalon;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
