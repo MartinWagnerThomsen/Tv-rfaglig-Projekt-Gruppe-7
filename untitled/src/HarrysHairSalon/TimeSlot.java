@@ -44,13 +44,20 @@ public class TimeSlot {
     }
 
 
+    // Tjekker om tider overlapper
     public boolean overlaps(TimeSlot other){
-        return this.startTime.isBefore(endTime) &&
+        return this.startTime.isBefore(other.endTime) &&
                 other.startTime.isBefore(this.endTime);
     }
 
+    // Får varigheden af aftalen i minutter
     public long getDuration(){
         return Duration.between(startTime, endTime).toMinutes();
+    }
+
+    // Tjekker om aftalen er inde for åbningstid
+    public boolean contains(LocalTime time){
+        return !time.isBefore(startTime) && time.isBefore(endTime);
     }
 
     public String getTimeSlot(){
@@ -60,6 +67,6 @@ public class TimeSlot {
 
     @Override
     public String toString() {
-        return getTimeSlot();
+        return startTime + " - " + endTime + (isAvailable ? " (Available)" : "(Unavailable)");
     }
 }
