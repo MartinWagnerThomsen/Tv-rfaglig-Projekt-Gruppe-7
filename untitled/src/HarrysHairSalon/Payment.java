@@ -67,13 +67,15 @@ public class Payment {
     }
 
 
+    // Marker regning som betalt
     public void markAsPaid() {
         this.isPaid = true;
         this.paymentDate = LocalDate.now();
         this.paymentTime = LocalTime.now();
-        System.out.println("Payment marked as paid on " + paymentDate + " " + paymentTime);
+        System.out.println("Payment of " + amount + " DKK marked as paid on " + paymentDate + " " + paymentTime);
     }
 
+    // Få betalingsstatus
     public String getPaymentStatus() {
         if (isPaid) {
             return "PAID on " + paymentDate + " " + paymentTime + " via " + paymentMethod;
@@ -82,6 +84,7 @@ public class Payment {
         }
     }
 
+    // få betalingsdetaljer
     public String getPaymentDetails() {
         return "Payment Details:\n" +
                "Amount: " + amount + "\n" +
@@ -92,6 +95,6 @@ public class Payment {
 
     @Override
     public String toString() {
-    return getPaymentDetails();
-}
+        return getPaymentStatus();
+    }
 }
