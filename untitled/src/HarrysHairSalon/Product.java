@@ -18,13 +18,13 @@ public class Product {
     public int getProductId() {return productId;}
     public String getName() {return name;}
     public double getPrice() {return price;}
-    public ProductCategory category() {return category;}
+    public ProductCategory getCategory() {return category;}
 
     // Setters
     public void setProductId(int productId) {this.productId = productId;}
     public void setName(String name) {this.name = name;}
     public void setPrice(double price) {this.price = price;}
-    public ProductCategory getCategory() {return category;}
+    public void setCategory(ProductCategory category) {this.category = category;}
 
 
     public String getProductinfo() {
