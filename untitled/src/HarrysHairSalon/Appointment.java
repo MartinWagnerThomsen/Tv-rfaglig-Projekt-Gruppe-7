@@ -39,7 +39,7 @@ public class Appointment {
                 "\nCustomer: " + customer.getName() +
                 "\nDate and time: " + dateTime +
                 "\nDuration in minutes: " + duration +
-                "\nOrder: " + order.getOrderDetails() +
+                "\nOrder: " + (order != null ? order.getOrderDetails() : "No order") +
                 "\nStatus: " + status;
     }
 
