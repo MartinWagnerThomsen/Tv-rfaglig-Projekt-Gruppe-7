@@ -7,6 +7,7 @@ public class Product {
     private double price;
     private ProductCategory category;
 
+    //Konstruktør
     public Product(int productId, String name, double price, ProductCategory category) {
         this.productId = productId;
         this.name = name;
@@ -27,6 +28,7 @@ public class Product {
     public void setCategory(ProductCategory category) {this.category = category;}
 
 
+    // Får produkt info
     public String getProductinfo() {
         return new String("Product ID: " + productId + "\nName: " + name +
                 "\nPrice: " + price + "\nCategory: " + category);

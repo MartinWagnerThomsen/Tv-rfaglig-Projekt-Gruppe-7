@@ -5,6 +5,7 @@ public abstract class User {
     protected String password;
     protected UserRole role;
 
+    //Konstruktør
     public User(String username, String password, UserRole role){
         this.username = username;
         this.password = password;
@@ -21,6 +22,7 @@ public abstract class User {
     public void setPassword(String password) {this.password = password;}
     public void setRole(UserRole role) {this.role = role;}
 
+    //Få bruger info
     public String getUserInfo(){
         return username + password + role;
     }

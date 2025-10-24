@@ -7,6 +7,7 @@ public class Customer {
     private String mail;
     private boolean hasCredit;
 
+    //Konstruktører
     public Customer(int id, String name, String phone, String mail, boolean hasCredit) {
         this.id = id;
         this.name = name;
@@ -62,6 +63,7 @@ public class Customer {
     }
 
 
+    // Får kundeinfo
     public String CustomerInfo() {
         return new String("Customer Info:\n" + "ID: " + id + "\nName: " + name +
                 "\nPhone: " + phone + "\nMail: " + mail + "\nCredit: " + hasCredit);

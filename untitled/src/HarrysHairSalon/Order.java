@@ -15,6 +15,7 @@ public class Order {
     private LocalTime orderTime;
 
 
+    // Konstruktør
     public Order(int orderId, double haircutPrice){
         this.orderId = orderId;
         this.haircutPrice = haircutPrice;
@@ -40,12 +41,13 @@ public class Order {
         return payment;
     }
 
-
+    //Tilføj produkt og opdater beløb
     public void addProduct(Product product){
         products.add(product);
         totalAmount += product.getPrice();
     }
 
+    //Beregn fulde beløb
     public void calculateTotal(){
         totalAmount = haircutPrice;
         for (Product p : products) {
@@ -53,39 +55,42 @@ public class Order {
         }
     }
 
+    //Gennemfører betaling
     public void processPayment() {
         if (payment != null){
             payment.markAsPaid();
         }
     }
 
+    //Få alle ordre oplysninger
     public String getOrderDetails() {
-        StringBuilder details = new StringBuilder();
-        details.append("Order #").append(orderId).append("\n");
-        details.append("Date: ").append(orderDate).append(" ").append(orderTime).append("\n");
-        details.append("Haircut: ").append(String.format("%.2f", haircutPrice)).append(" DKK\n");
+        String details = "Order #" + orderId + "\n";
+        details += "Date: " + orderDate + " " + orderTime + "\n";
+        details += "Haircut: " + haircutPrice + " DKK\n";
 
+        //Tilføj produkt, hvis der er nogle
         if (!products.isEmpty()) {
-            details.append("Products:\n");
+            details += "Products:\n";
             for (Product p : products) {
-                details.append("  - ").append(p.getName())
-                        .append(": ").append(String.format("%.2f", p.getPrice())).append(" DKK\n");
+                details += "  - " + p.getName() + ": " + p.getPrice() + " DKK\n";
             }
         }
 
-        details.append("Total: ").append(String.format("%.2f", totalAmount)).append(" DKK\n");
+        //Fulde beløb
+        details += "Total: " + totalAmount + " DKK\n";
 
+        //Betalingstatus
         if (payment != null) {
-            details.append("Payment: ").append(payment.getPaymentStatus());
+            details += "Payment: " + payment.getPaymentStatus();
         } else {
-            details.append("Payment: Not processed yet");
+            details += "Payment: Not processed yet";
         }
 
-        return details.toString();
+        return details;
     }
 
-    @Override
-    public String toString(){
-        return "Order #" + orderId + " | Total: " + String.format("%.2f", totalAmount) + " DKK";
+    //Oversigt over ordren
+    public String toString() {
+        return "Order #" + orderId + " | Total: " + totalAmount + " DKK";
     }
 }

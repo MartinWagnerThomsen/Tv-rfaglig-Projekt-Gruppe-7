@@ -10,6 +10,7 @@ public class Payment {
     private PaymentMethod paymentMethod;
     private double amount;
 
+    //Konstruktører
     public Payment(boolean isPaid, LocalDate paymentDate, LocalTime paymentTime,
                    PaymentMethod paymentMethod, double amount) {
         this.isPaid = isPaid;
