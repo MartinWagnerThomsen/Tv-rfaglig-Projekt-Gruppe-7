@@ -7,6 +7,7 @@ public class TimeSlot {
     private LocalTime endTime;
     private boolean isAvailable;
 
+    //Konstruktører
     public TimeSlot(LocalTime startTime, LocalTime endTime, boolean isAvailable){
         this.startTime = startTime;
         this.endTime = endTime;
@@ -60,6 +61,7 @@ public class TimeSlot {
         return !time.isBefore(startTime) && time.isBefore(endTime);
     }
 
+    //Viser valgte tid
     public String getTimeSlot(){
         return ("Start time: " + startTime + "\nEnd time" + endTime +
                 "\nDuration: " + getDuration() + "\nAvailability: " + isAvailable);
